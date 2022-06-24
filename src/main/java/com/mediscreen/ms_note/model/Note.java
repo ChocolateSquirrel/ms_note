@@ -33,4 +33,9 @@ public class Note {
     public void setRecommendations(String recommendations) {
         this.recommendations = recommendations;
     }
+
+    public Note(String patId, String recommendations) {
+        this.patId = patId;
+        this.recommendations = recommendations;
+    }
 }
