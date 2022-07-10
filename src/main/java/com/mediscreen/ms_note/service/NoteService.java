@@ -4,6 +4,7 @@ import com.mediscreen.ms_note.model.Note;
 import com.mediscreen.ms_note.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,5 +41,13 @@ public class NoteService {
         noteToUpdate.setRecommendations(note.getRecommendations());
         noteRepository.save(noteToUpdate);
         return noteToUpdate;
+    }
+
+    public List<Note> getPatientNotes(String patientId) {
+        return noteRepository.findAllByPatientId(patientId);
+    }
+
+    public void addPatientNote(String patientId, Note note) {
+        noteRepository.findAllByPatientId(patientId).add(note);
     }
 }

@@ -43,4 +43,14 @@ public class NoteController {
         Note NoteDeleted = noteService.deleteNote(id);
         return NoteDeleted;
     }
+
+    @GetMapping("/{patientId}/notes/list")
+    public List<Note> getPatientNotes(@PathVariable String patientId){
+        return noteService.getPatientNotes(patientId);
+    }
+
+    @PostMapping("/{patientId}/note")
+    public void addPatientNote(@PathVariable String patientId, @RequestBody Note note){
+       noteService.addPatientNote(patientId, note);
+    }
 }

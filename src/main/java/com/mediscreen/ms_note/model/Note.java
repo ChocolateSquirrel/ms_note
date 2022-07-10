@@ -1,13 +1,15 @@
 package com.mediscreen.ms_note.model;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
+
+import java.util.UUID;
 
 @Document(collection = "notes")
 public class Note {
-    @Id
+    @MongoId
     private String id;
-    private String patId;
+    private String patientId;
     private String recommendations;
 
     public String getId() {
@@ -19,11 +21,11 @@ public class Note {
     }
 
     public String getPatientId() {
-        return patId;
+        return patientId;
     }
 
     public void setPatientId(String patId) {
-        this.patId = patId;
+        this.patientId = patId;
     }
 
     public String getRecommendations() {
@@ -35,7 +37,8 @@ public class Note {
     }
 
     public Note(String patId, String recommendations) {
-        this.patId = patId;
+        id = UUID.randomUUID().toString();
+        this.patientId = patId;
         this.recommendations = recommendations;
     }
 }
