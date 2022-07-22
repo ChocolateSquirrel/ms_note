@@ -3,13 +3,18 @@ package com.mediscreen.ms_note.model;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Document(collection = "notes")
 public class Note {
     @MongoId
     private String id;
+
+    @NotBlank
     private String patientId;
+
+    @NotBlank
     private String recommendations;
 
     public String getId() {
@@ -35,6 +40,8 @@ public class Note {
     public void setRecommendations(String recommendations) {
         this.recommendations = recommendations;
     }
+
+    public Note() {}
 
     public Note(String patId, String recommendations) {
         id = UUID.randomUUID().toString();

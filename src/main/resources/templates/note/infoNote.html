@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Note information</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="menu" th:replace="bandeau"></div>
+
+    <h1>Informations de la note :</h1>
+
+    <div th:object="${note}">
+        <p>Patient Id  : <span th:text="${note.patientId}"></span></p>
+        <p>Recommendations : <span th:text="${note.recommendations}"></span></p>
+    </div>
+
+    <div class="row" id="retour">
+        <a th:href="@{/view/notes/}"><button class="btn btn-primary">Retour</button></a>
+    </div>
+
+</body>
+</html>

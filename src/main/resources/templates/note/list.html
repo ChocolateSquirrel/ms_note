@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Note list</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="menu" th:replace="bandeau"></div>
+
+    <div class="row" id="add_Note">
+        <a th:href="@{/view/notes/add}"><button class="btn btn-primary">Add Note</button></a>
+    </div>
+
+    <div class="row" id="list_Patient">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>PatientId</th>
+                <th>Recommendations</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${notes.empty}">
+                <td>No note</td>
+            </tr>
+            <tr th:each="note : ${notes}">
+                <th style="width: 10%" th:text="${note.id}"></th>
+                <th th:text="${note.patientId}"></th>
+                <th th:text="${note.recommendations}"></th>
+                <td style="width: 15%" class="text-center">
+                    <a th:href="@{/view/notes/{id}(id=${note.id})}">Show</a>&nbsp;|&nbsp;
+                    <a th:href="@{/view/notes/update/{id}(id=${note.id})}">Edit</a>&nbsp;|
+                    <a th:href="@{/view/notes/delete/{id}(id=${note.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
