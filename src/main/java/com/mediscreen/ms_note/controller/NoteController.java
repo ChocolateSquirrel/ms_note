@@ -4,6 +4,7 @@ import com.mediscreen.ms_note.model.Note;
 import com.mediscreen.ms_note.service.NoteService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class NoteController {
         return noteService.getAllNotes();
     }
 
-    @PostMapping("/")
+    @PostMapping("/add")
     public Note addNote(@RequestParam String patId, @RequestParam String recommendations){
         Note note = new Note(patId, recommendations);
         return noteService.addNote(note);
@@ -32,13 +33,13 @@ public class NoteController {
         return noteService.getNote(id);
     }
 
-    @PutMapping("/{id}")
+    @PostMapping("/update/{id}")
     public Note updateNote(@PathVariable String id, @RequestBody Note note) {
         Note NoteUpdated = noteService.updateNote(id, note);
         return NoteUpdated;
     }
 
-    @DeleteMapping("/{id}")
+    @PostMapping("/delete/{id}")
     public Note delete(@PathVariable String id) {
         Note NoteDeleted = noteService.deleteNote(id);
         return NoteDeleted;

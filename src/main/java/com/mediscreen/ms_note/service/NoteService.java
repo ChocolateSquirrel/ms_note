@@ -4,9 +4,7 @@ import com.mediscreen.ms_note.model.Note;
 import com.mediscreen.ms_note.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class NoteService {
@@ -37,7 +35,6 @@ public class NoteService {
 
     public Note updateNote(String id, Note note){
         Note noteToUpdate = noteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Note not found: " + id));
-        noteToUpdate.setPatientId(note.getPatientId());
         noteToUpdate.setRecommendations(note.getRecommendations());
         noteRepository.save(noteToUpdate);
         return noteToUpdate;
