@@ -10,12 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -58,13 +56,6 @@ public class NoteServiceTests {
         assertThrows(IllegalArgumentException.class, () -> noteService.getNote("id"), "Note not found id");
     }
 
-/*    @Test
-    public void addNoteNOK() {
-        Note note = new Note("", "");
-        assertThatThrownBy(() -> noteService.addNote(note))
-                .isInstanceOf(ConstraintViolationException.class);
-    }*/
-
     @Test
     public void deleteNoteNOK() {
         when(noteRepository.findById(anyString())).thenReturn(Optional.empty());
@@ -86,16 +77,6 @@ public class NoteServiceTests {
         assertEquals("1", noteFinal.getPatientId());
         assertEquals("Faire du sport", noteFinal.getRecommendations());
     }
-
-/*    @Test
-    public void updateNoteNOK() {
-        Note note1 = new Note("1", "Faire du sport");
-        Note noteUpdated = new Note("1", "");
-        when(noteRepository.findById("1")).thenReturn(Optional.of(note1));
-        assertThatThrownBy(() -> noteService.updateNote("1", noteUpdated))
-                .isInstanceOf(ConstraintViolationException.class);
-        //assertThrows(IllegalArgumentException.class, () -> noteService.updateNote("1", noteUpdated));
-    }*/
 
     @Test
     public void getPatientNotes() {
