@@ -52,7 +52,8 @@ public class NoteControllerView {
     public String addNote(@Valid @ModelAttribute Note note, Model model, BindingResult result){
         log.info("Request POST : /view/notes/");
         if (!result.hasErrors()){
-            noteService.addNote(note);
+            Note noteToAdd = new Note(note.getPatientId(), note.getRecommendations());
+            noteService.addNote(noteToAdd);
             List<Note> notesList = noteService.getAllNotes();
             model.addAttribute("notes", notesList);
             return "note/list";

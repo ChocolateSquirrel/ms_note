@@ -5,20 +5,22 @@
     <meta charset="UTF-8">
     <title>Note information</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/show.css">
 </head>
 
 <body>
     <div id="menu" th:replace="bandeau"></div>
 
-    <h1>Informations de la note :</h1>
+    <div id="title"><h1>Information about note :</h1></div>
 
-    <div th:object="${note}">
+    <div id="page" th:object="${note}">
         <p>Patient Id  : <span th:text="${note.patientId}"></span></p>
         <p>Recommendations : <span th:text="${note.recommendations}"></span></p>
-    </div>
 
-    <div class="row" id="retour">
-        <a th:href="@{/view/notes/}"><button class="btn btn-primary">Retour</button></a>
+
+    <div id="return" style="margin:auto">
+        <a th:href="@{/view/notes/}"><button class="btn btn-primary">Return</button></a>
+    </div>
     </div>
 
 </body>

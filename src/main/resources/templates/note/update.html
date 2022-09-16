@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <title>Add Note</title>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/update.css">
 </head>
 
 <body>
     <div id="menu" th:replace="bandeau"></div>
+    <div id="page">
     <form method="post" th:action="@{/view/notes/update/{id}(id=${note.id})}" th:object="${note}">
         <div class="patientId">
             <label for="patientId">Patient Id : </label>
@@ -27,9 +29,9 @@
         </div>
     </form>
 
-    <div class="row" id="Return">
+    <div class="row" id="return">
         <a th:href="@{/view/notes/}"><button class="btn btn-primary">Return</button></a>
     </div>
-
+    </div>
 </body>
 </html>
